@@ -6,7 +6,7 @@ export default class Funcionario extends BaseModel {
   public id: number
 
   @column()
-  public cpf: number
+  public cpf: string
 
   @column()
   public nome: string
