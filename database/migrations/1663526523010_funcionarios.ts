@@ -11,7 +11,7 @@ export default class extends BaseSchema {
       table.string('sexo', 1)
       table.string('endereco', 50)
       table.integer('salario').notNullable()
-      table.integer('numero')
+      table.string('numero')
       table.integer('id_academia').unsigned().references('id').inTable('academias').notNullable()
 
       /**

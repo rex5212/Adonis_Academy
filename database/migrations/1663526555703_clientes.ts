@@ -11,7 +11,7 @@ export default class extends BaseSchema {
       table.string('sexo', 1)
       table.integer('idade').notNullable()
       table.string('endereco', 50)
-      table.integer('numero').notNullable()
+      table.string('numero').notNullable()
 
 
 
