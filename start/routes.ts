@@ -20,16 +20,21 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
+Route.resource('/users', 'UsersController')//.middleware('auth')
 
-Route.resource('/academia', 'AcademiasController')
-Route.resource('/suplementos', 'SuplementosController')
-Route.resource('/funcionarios', 'FuncionariosController')
-Route.resource('/clientes', 'ClientesController')
-Route.resource('/pesos', 'PesosController')
-Route.resource('/equipamentos', 'EquipamentosController')
-Route.resource('/vicios', 'ViciosController')
-Route.resource('/avpsicologicas', 'AvpsicologicosController')
-Route.resource('/tratamentos', 'TratamentosController')
-Route.resource('/avfisicas', 'AvfisicasController')
-Route.resource('/avaliacao', 'AvaliacaosController')
-Route.resource('/treinamentos', 'TreinamentosController')
+Route.post('/login', 'UsersController.login')
+
+Route.group(() => {
+Route.resource('/academia', 'AcademiasController').apiOnly()
+Route.resource('/suplementos', 'SuplementosController').apiOnly()
+Route.resource('/funcionarios', 'FuncionariosController').apiOnly()
+Route.resource('/clientes', 'ClientesController').apiOnly()
+Route.resource('/pesos', 'PesosController').apiOnly()
+Route.resource('/equipamentos', 'EquipamentosController').apiOnly()
+Route.resource('/vicios', 'ViciosController').apiOnly()
+Route.resource('/avpsicologicas', 'AvpsicologicosController').apiOnly()
+Route.resource('/tratamentos', 'TratamentosController').apiOnly()
+Route.resource('/avfisicas', 'AvfisicasController').apiOnly()
+Route.resource('/avaliacao', 'AvaliacaosController').apiOnly()
+Route.resource('/treinamentos', 'TreinamentosController').apiOnly()
+}).middleware('auth')
