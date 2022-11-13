@@ -10,7 +10,7 @@ export default class ClientesController {
  
      async store({request}){
 
-        const dados = request.only(['cpf', 'nome', 'sexo', 'idade', 'endereco', 'numero'])
+        const dados = request.all()
         return Cliente.create(dados)
          
      }
@@ -26,7 +26,7 @@ export default class ClientesController {
     async update({request}){
         
      const id = request.param("id")
-     const dados = request.only(['cpf', 'nome', 'sexo', 'idade', 'endereco', 'numero'])
+     const dados = request.all()
      const updat = await Cliente.findOrFail(id)
      updat.merge(dados).save()
      return updat

@@ -24,7 +24,7 @@ export default class Funcionario extends BaseModel {
   public numero: number
 
   @column()
-  public idAcademia: number
+  public academiaId: number
 
 
   @column.dateTime({ autoCreate: true })

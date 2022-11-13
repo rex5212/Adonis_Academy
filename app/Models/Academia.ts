@@ -13,6 +13,12 @@ export default class Academia extends BaseModel {
 
   @column()
   public nome: string
+
+  @column()
+  public horarioinit: string
+
+  @column()
+  public horarioend: string
   
 
   @column.dateTime({ autoCreate: true })

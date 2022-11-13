@@ -10,7 +10,7 @@ export default class SuplementosController {
  
      async store({request}){
          
-         const dados = request.only(['nome', 'marca', 'quantidade', 'precos'])
+         const dados = request.all()
          return Suplemento.create(dados)
          
      }
@@ -25,7 +25,7 @@ export default class SuplementosController {
      async update({request}){
         
      const id = request.param("id")
-     const dados = request.only(['nome', 'marca', 'quantidade', 'precos'])
+     const dados = request.all()
      const updat = await Suplemento.findOrFail(id)
      updat.merge(dados).save()
      return updat

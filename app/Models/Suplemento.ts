@@ -17,6 +17,10 @@ export default class Suplemento extends BaseModel {
   @column()
   public precos: number
 
+  @column()
+  public academiaId: number
+
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

@@ -10,7 +10,7 @@ export default class FuncionariosController {
  
      async store({request}){
          
-         const dados = request.only(['cpf', 'nome', 'sexo', 'endereco', 'salario', 'numero', 'id_academia'])
+         const dados = request.all()
          return Funcionario.create(dados)
          
      }
@@ -26,7 +26,7 @@ export default class FuncionariosController {
      async update({request}){
         
      const id = request.param("id")
-     const dados = request.only(['cpf', 'nome', 'sexo', 'endereco', 'salario', 'numero', 'id_academia'])
+     const dados = request.all()
      const updat = await Funcionario.findOrFail(id)
      updat.merge(dados).save()
      return updat

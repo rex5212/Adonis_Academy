@@ -10,7 +10,7 @@ export default class EquipamentosController {
  
      async store({request}){
          
-         const dados = request.only(['id_pesos'])
+         const dados = request.all()
          return Equipamento.create(dados)
          
      }
@@ -25,7 +25,7 @@ export default class EquipamentosController {
      async update({request}){
         
      const id = request.param("id")
-     const dados = request.only(['id_pesos'])
+     const dados = request.all()
      const updat = await Equipamento.findOrFail(id)
      updat.merge(dados).save()
      return updat
