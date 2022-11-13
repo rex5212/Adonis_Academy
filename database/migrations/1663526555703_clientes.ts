@@ -7,14 +7,12 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.string('cpf').notNullable()
-      table.string('nome', 40).notNullable()
-      table.string('sexo', 1)
+      table.string('nome', 60).notNullable()
+      table.string('sexo', 10)
       table.integer('idade').notNullable()
       table.string('endereco', 50)
       table.string('numero').notNullable()
-
-
-
+      table.string('estadocivil', 12).notNullable()
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

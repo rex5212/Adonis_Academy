@@ -9,8 +9,8 @@ export default class extends BaseSchema {
       table.string('endereco', 50).notNullable()
       table.string('numero').notNullable()
       table.string('nome', 15).notNullable()
-      table.string("horarioinit")
-      table.string("horarioend")
+      table.string("horarioinit", 5).notNullable()
+      table.string("horarioend", 5).notNullable()
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

@@ -8,7 +8,8 @@ export default class extends BaseSchema {
       table.increments('id')
       table.integer('equipamentos_id').unsigned().references('id').inTable('equipamentos')
       table.integer('funcionarios_id').unsigned().references('id').inTable('funcionarios').notNullable()
-      table.integer('avaliacaos_id').unsigned().references('id').inTable('avaliacaos')
+      table.integer('avaliacaos_id').unsigned().references('id').inTable('avaliacaos').notNullable()
+      table.string('repeticoes', 40).notNullable()
 
 
       /**

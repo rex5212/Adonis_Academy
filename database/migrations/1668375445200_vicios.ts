@@ -1,14 +1,13 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class extends BaseSchema {
-  protected tableName = 'pesos'
+  protected tableName = 'vicios'
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.integer('numeracao').notNullable()
-      table.string('modelo', 10).notNullable()
-      table.integer('peso').notNullable()
+      table.string('tipo').notNullable()
+      table.string('duracao')
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
