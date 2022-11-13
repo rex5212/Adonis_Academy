@@ -6,11 +6,9 @@ export default class extends BaseSchema {
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.integer('id_academia').unsigned().references('id').inTable('academias').notNullable()
-      table.integer('id_suplemento').unsigned().references('id').inTable('suplementos')
-      table.integer('id_equipamento').unsigned().references('id').inTable('equipamentos')
-      table.integer('id_funcionario').unsigned().references('id').inTable('funcionarios').notNullable()
-      table.integer('id_avaliacao').unsigned().references('id').inTable('avaliacaos')
+      table.integer('equipamentos_id').unsigned().references('id').inTable('equipamentos')
+      table.integer('funcionarios_id').unsigned().references('id').inTable('funcionarios').notNullable()
+      table.integer('avaliacaos_id').unsigned().references('id').inTable('avaliacaos')
 
 
       /**

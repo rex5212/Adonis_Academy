@@ -9,16 +9,28 @@ export default class Avaliacao extends BaseModel {
   public id: number
 
   @column()
+  public clientesId: number
+  
+  @column()
+  public funcionariosId: number
+  
+  @column()
   public estadoCivil: string
 
   @column()
-  public idCliente: number
+  public altura: number
 
   @column()
-  public idAvpsicologica: number
+  public peso: number
 
   @column()
-  public idAvfisica: number
+  public alimentacao: string
+
+  @column()
+  public manias: string
+
+  @column()
+  public vicios: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

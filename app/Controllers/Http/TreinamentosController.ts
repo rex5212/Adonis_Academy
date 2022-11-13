@@ -10,7 +10,7 @@ export default class TreinamentosController {
  
      async store({request}){
 
-         const dados = request.only(['id_academia', "id_suplementos", 'id_equipamento', 'id_funcionario', 'id_avaliacao'])
+         const dados = request.all()
          return Treinamento.create(dados)
          
      }
@@ -26,7 +26,7 @@ export default class TreinamentosController {
      async update({request}){
         
      const id = request.param("id")
-     const dados = request.only(['id_academia', "id_suplementos", 'id_equipamento', 'id_funcionario', 'id_avaliacao'])
+     const dados = request.all()
      const updat = await Treinamento.findOrFail(id)
      updat.merge(dados).save()
      return updat

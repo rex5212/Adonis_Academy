@@ -10,7 +10,7 @@ export default class PesosController {
  
      async store({request}){
 
-        const dados = request.only(['numeracao', 'modelo'])
+        const dados = request.all()
          return Peso.create(dados)
          
      }
@@ -25,7 +25,7 @@ export default class PesosController {
      async update({request}){
         
      const id = request.param("id")
-     const dados = request.only(['numeracao', 'modelo'])
+     const dados = request.all()
      const updat = await Peso.findOrFail(id)
      updat.merge(dados).save()
      return updat

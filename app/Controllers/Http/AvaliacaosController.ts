@@ -10,7 +10,7 @@ export default class AvaliacaosController {
  
      async store({request}){
          
-         const dados = request.only(['estado_civil', 'id_cliente', 'id_avpsicologica', 'id_avfisica'])
+         const dados = request.all()
          return Avaliacao.create(dados)
          
      }
@@ -26,7 +26,7 @@ export default class AvaliacaosController {
     async update({request}){
     
      const id = request.param("id")
-     const dados = request.only(['estado_civil', 'id_cliente', 'id_avpsicologica', 'id_avfisica'])
+     const dados = request.all()
      const updat = await Avaliacao.findOrFail(id)
      updat.merge(dados).save()
      return updat

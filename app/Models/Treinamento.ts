@@ -6,19 +6,13 @@ export default class Treinamento extends BaseModel {
   public id: number
 
   @column()
-  public idAcademia: number
+  public equipamentosId: number
 
   @column()
-  public idSuplemento: number
+  public funcionariosId: number
 
   @column()
-  public idEquipamento: number
-
-  @column()
-  public idFuncionario: number
-
-  @column()
-  public idAvaliacao: number
+  public avaliacaosId: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

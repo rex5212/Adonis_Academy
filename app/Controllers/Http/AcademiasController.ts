@@ -10,7 +10,7 @@ export default class AcademiasController {
  
      async store({request}){
 
-         const dados = request.only(['nome', 'numero', 'endereco'])
+         const dados = request.all()
          return Academia.create(dados)
          
      }
@@ -26,7 +26,7 @@ export default class AcademiasController {
      async update({request}){
         
         const id = request.param("id")
-        const dados = request.only(['nome', 'numero', 'endereco'])
+        const dados = request.all()
         const updat = await Academia.findOrFail(id)
         updat.merge(dados).save()
         return updat

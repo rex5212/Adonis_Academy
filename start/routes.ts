@@ -24,17 +24,14 @@ Route.resource('/users', 'UsersController')//.middleware('auth')
 
 Route.post('/login', 'UsersController.login')
 
-Route.group(() => {
+//Route.group(() => {
 Route.resource('/academia', 'AcademiasController').apiOnly()
 Route.resource('/suplementos', 'SuplementosController').apiOnly()
 Route.resource('/funcionarios', 'FuncionariosController').apiOnly()
 Route.resource('/clientes', 'ClientesController').apiOnly()
 Route.resource('/pesos', 'PesosController').apiOnly()
 Route.resource('/equipamentos', 'EquipamentosController').apiOnly()
-Route.resource('/vicios', 'ViciosController').apiOnly()
-Route.resource('/avpsicologicas', 'AvpsicologicosController').apiOnly()
-Route.resource('/tratamentos', 'TratamentosController').apiOnly()
-Route.resource('/avfisicas', 'AvfisicasController').apiOnly()
 Route.resource('/avaliacao', 'AvaliacaosController').apiOnly()
 Route.resource('/treinamentos', 'TreinamentosController').apiOnly()
-}).middleware('auth')
+Route.resource('/dietas', 'DietasController').apiOnly()
+//}).middleware('auth')
