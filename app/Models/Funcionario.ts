@@ -1,6 +1,5 @@
 import { DateTime } from 'luxon'
 import { BaseModel, BelongsTo, belongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
-import Suplemento from './Suplemento'
 import Academia from './Academia'
 import Dieta from './Dieta'
 import Treinamento from './Treinamento'
@@ -26,7 +25,7 @@ export default class Funcionario extends BaseModel {
   public salario: number
 
   @column()
-  public numero: number
+  public numero: string
 
   @column()
   public academiaId: number
@@ -36,19 +35,17 @@ export default class Funcionario extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
-
-  @belongsTo(()=>Suplemento)
-  public suplemento: BelongsTo<typeof Suplemento>
   
-  @belongsTo(()=>Academia)
-  public academia: BelongsTo<typeof Academia>
+  @belongsTo(() => Academia)
+  public academia: BelongsTo <typeof Academia>
   
-  @hasMany(()=>Dieta)
-  public dieta: HasMany<typeof Dieta>
+  @hasMany(() => Dieta)
+  public dietas: HasMany <typeof Dieta>
   
-  @hasMany(()=>Treinamento)
-  public treinamento: HasMany<typeof Treinamento>
+  @hasMany(() => Treinamento)
+  public treinamentos: HasMany <typeof Treinamento>
   
-  @hasMany(()=>Avaliacao)
-  public avaliacao: HasMany<typeof Avaliacao>
+  @hasMany(() => Avaliacao)
+  public avaliacoes: HasMany <typeof Avaliacao>
+  
 }

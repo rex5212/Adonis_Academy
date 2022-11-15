@@ -23,7 +23,10 @@ export default class Cliente extends BaseModel {
   public endereco: string
 
   @column()
-  public numero: number
+  public numero: string
+
+  @column()
+  public estadocivil: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -31,10 +34,10 @@ export default class Cliente extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
-  @hasMany(()=>Dieta)
-  public dieta: HasMany<typeof Dieta>
+  @hasMany(() => Dieta)
+  public dietas: HasMany<typeof Dieta>
 
-  @hasMany(()=>Avaliacao)
-  public avaliacao: HasMany<typeof Avaliacao>
+  @hasMany(() => Avaliacao)
+  public avaliacoes: HasMany<typeof Avaliacao>
 
 }

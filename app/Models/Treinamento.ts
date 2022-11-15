@@ -18,23 +18,27 @@ export default class Treinamento extends BaseModel {
   @column()
   public avaliacaosId: number
 
+  @column()
+  public repeticoes: string
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
-  @belongsTo(()=>Equipamento)
-  public equipamento: BelongsTo<typeof Equipamento>
+  @belongsTo(() => Equipamento)
+  public equipamento: BelongsTo <typeof Equipamento>
   
-  @belongsTo(()=>Funcionario)
-  public funcionario: BelongsTo<typeof Funcionario>
+  @belongsTo(() => Funcionario)
+  public funcionario: BelongsTo <typeof Funcionario>
 
-  @belongsTo(()=>Avaliacao)
-  public avaliacao: BelongsTo<typeof Avaliacao>
+  @belongsTo(() => Avaliacao)
+  public avaliacao: BelongsTo <typeof Avaliacao>
 
-  @hasMany(()=>Dieta)
-  public dieta: HasMany<typeof Dieta>
+  @hasMany(() => Dieta)
+  public dietas: HasMany <typeof Dieta>
+
 }
 
 

@@ -1,8 +1,10 @@
 import { DateTime } from 'luxon'
-import { BaseModel, BelongsTo, belongsTo, column, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column, hasMany, HasMany, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
 import Cliente from './Cliente'
 import Treinamento from './Treinamento'
 import Funcionario from './Funcionario'
+import Vicio from './Vicio'
+import Problema from './Problema'
 
 export default class Avaliacao extends BaseModel {
   @column({ isPrimary: true })
@@ -13,9 +15,6 @@ export default class Avaliacao extends BaseModel {
   
   @column()
   public funcionariosId: number
-  
-  @column()
-  public estadoCivil: string
 
   @column()
   public altura: number
@@ -26,24 +25,25 @@ export default class Avaliacao extends BaseModel {
   @column()
   public alimentacao: string
 
-  @column()
-  public manias: string
-
-  @column()
-  public vicios: string
-
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
-  @belongsTo(()=>Cliente)
+  @belongsTo(() => Cliente)
   public cliente: BelongsTo<typeof Cliente>
+  
+  @belongsTo(() => Funcionario)
+  public funcionario: BelongsTo<typeof Funcionario>
 
-  @hasMany(()=>Treinamento)
+  @hasMany(() => Treinamento)
   public treinamento: HasMany<typeof Treinamento>
 
-  @belongsTo(()=>Funcionario)
-  public funcionario: BelongsTo<typeof Funcionario>
+  @manyToMany(() => Vicio, { pivotTable: 'vicios' })
+  public vicios: ManyToMany <typeof Vicio>
+
+  @manyToMany(() => Problema, { pivotTable: 'problemas' })
+  public problemas: ManyToMany <typeof Problema>
+  
 }

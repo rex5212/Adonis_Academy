@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
 import Equipamento from './Equipamento'
 
 export default class Peso extends BaseModel {
@@ -12,12 +12,16 @@ export default class Peso extends BaseModel {
   @column()
   public modelo: string
 
+  @column()
+  public peso: number
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
-  @hasMany(()=>Equipamento)
-  public equipamento: HasMany<typeof Equipamento>
+  @manyToMany(() => Equipamento, { pivotTable:  'peso_equipamentos' })
+  public equipamentos: ManyToMany <typeof Equipamento>
+
 }

@@ -1,7 +1,6 @@
 import { DateTime } from 'luxon'
-import { BaseModel, BelongsTo, belongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import Academia from './Academia'
-import Funcionario from './Funcionario'
 
 export default class Suplemento extends BaseModel {
   @column({ isPrimary: true })
@@ -28,9 +27,7 @@ export default class Suplemento extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
-  @belongsTo(()=>Academia)
-  public academia: BelongsTo<typeof Academia>
+  @belongsTo(() => Academia)
+  public academia: BelongsTo <typeof Academia>
 
-  @hasMany(()=>Funcionario)
-  public funcionario: HasMany<typeof Funcionario>
 }

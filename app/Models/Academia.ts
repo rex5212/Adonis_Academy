@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, BelongsTo, belongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, HasMany, hasMany, HasOne, hasOne } from '@ioc:Adonis/Lucid/Orm'
 import Equipamento from './Equipamento'
 import Suplemento from './Suplemento'
 import Funcionario from './Funcionario'
@@ -12,7 +12,7 @@ export default class Academia extends BaseModel {
   public endereco: string
 
   @column()
-  public numero: number
+  public numero: string
 
   @column()
   public nome: string
@@ -29,12 +29,13 @@ export default class Academia extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
   
-  @hasMany(()=>Equipamento)
-  public equipamento: HasMany<typeof Equipamento>
+  @hasOne(() => Suplemento)
+  public suplemento: HasOne <typeof Suplemento>
   
-  @belongsTo(()=>Suplemento)
-  public suplemento: BelongsTo<typeof Suplemento>
+  @hasMany(() => Equipamento)
+  public equipamentos: HasMany <typeof Equipamento>
 
-  @hasMany(()=>Funcionario)
-  public funcionario: HasMany<typeof Funcionario>
+  @hasMany(() => Funcionario)
+  public funcionarios: HasMany <typeof Funcionario>
+  
 }
