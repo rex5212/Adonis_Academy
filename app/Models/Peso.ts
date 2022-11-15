@@ -7,7 +7,7 @@ export default class Peso extends BaseModel {
   public id: number
 
   @column()
-  public numeracao: number
+  public codigo: string
 
   @column()
   public modelo: string

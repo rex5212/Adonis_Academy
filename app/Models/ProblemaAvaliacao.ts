@@ -7,6 +7,12 @@ export default class ProblemaAvaliacao extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public avaliacaosId: number
+
+  @column()
+  public problemasId: number
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

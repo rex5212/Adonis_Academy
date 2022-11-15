@@ -8,8 +8,8 @@ export default class extends BaseSchema {
       table.increments('id')
       table.string('nome', 50).notNullable()
       table.string('codigo', 40).notNullable()
-      table.integer('pesos_id').unsigned().references('id').inTable('pesos')
-      table.integer('academias_id').unsigned().references('id').inTable('academias').notNullable()
+      table.integer('pesos_id').unsigned().references('id').inTable('pesos').onDelete('CASCADE')
+      table.integer('academias_id').unsigned().references('id').inTable('academias').notNullable().onDelete('CASCADE')
 
 
       /**

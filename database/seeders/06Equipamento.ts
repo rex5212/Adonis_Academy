@@ -4,9 +4,9 @@ import Equipamento from 'App/Models/Equipamento'
 export default class extends BaseSeeder {
   public async run () {
     await Equipamento.createMany([
-      {nome: "Supino", pesosId: 1, academiasId: 1},
-      {nome: "Esteira", pesosId: 1, academiasId: 1},
-      {nome: "Barra", pesosId: 1, academiasId: 1},
+      {nome: "Supino",codigo: '0516' ,pesosId: 1, academiasId: 1},
+      {nome: "Esteira",codigo: '0354' ,pesosId: 1, academiasId: 1},
+      {nome: "Barra",codigo: '1045' ,pesosId: 1, academiasId: 1},
     ])
   }
 }

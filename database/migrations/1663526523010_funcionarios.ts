@@ -12,7 +12,7 @@ export default class extends BaseSchema {
       table.string('endereco', 50)
       table.integer('salario').notNullable()
       table.string('numero', 15).notNullable()
-      table.integer('academia_id').unsigned().references('id').inTable('academias').notNullable()
+      table.integer('academia_id').unsigned().references('id').inTable('academias').notNullable().onDelete('CASCADE')
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
