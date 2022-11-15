@@ -20,11 +20,10 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.resource('/users', 'UsersController')//.middleware('auth')
-
+Route.group(() => { Route.resource('/users', 'UsersController') }).middleware('auth')
 Route.post('/login', 'UsersController.login')
 
-//Route.group(() => {
+Route.group(() => {
 Route.resource('/academia', 'AcademiasController').apiOnly()
 Route.resource('/suplementos', 'SuplementosController').apiOnly()
 Route.resource('/funcionarios', 'FuncionariosController').apiOnly()
@@ -34,4 +33,9 @@ Route.resource('/equipamentos', 'EquipamentosController').apiOnly()
 Route.resource('/avaliacao', 'AvaliacaosController').apiOnly()
 Route.resource('/treinamentos', 'TreinamentosController').apiOnly()
 Route.resource('/dietas', 'DietasController').apiOnly()
-//}).middleware('auth')
+Route.resource('/pesoequipamento', 'PesoequipamentosController').apiOnly()
+Route.resource('/vicios', 'ViciosController').apiOnly()
+Route.resource('/problemas', 'ProblemasController').apiOnly()
+Route.resource('/vicioavaliacao', 'ViciosAvaliacaosController').apiOnly()
+Route.resource('/problemaavaliacao', 'ProblemasAvaliacaosController').apiOnly()
+}).middleware('auth')

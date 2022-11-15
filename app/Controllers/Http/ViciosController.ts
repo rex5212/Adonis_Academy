@@ -1,38 +1,35 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-import Equipamento from "App/Models/Equipamento"
+import Vicio from "App/Models/Vicio"
 
 export default class EquipamentosController {
         
     async index(){
-        return await Equipamento.query()
-                                .preload("pesos")
-                                .preload("academia")
-                                .preload("treinamentos")
+        return await Vicio.query().preload("avaliacoes", (avaliacaoQuery) => avaliacaoQuery.preload("problemas").preload("cliente"))
     }
  
     async store({request}){
         const dados = request.all()
-        return Equipamento.create(dados)
+        return Vicio.create(dados) 
     }
  
     async show({request}){
         const id = request.param("id")
-        const show = Equipamento.findBy('id', id)
+        const show = Vicio.findBy('id', id)
         return show
     }
  
     async update({request}){  
         const id = request.param("id")
         const dados = request.all()
-        const updat = await Equipamento.findOrFail(id)
+        const updat = await Vicio.findOrFail(id)
         updat.merge(dados).save()
         return updat
     }
  
     async destroy({request}){    
         const id = request.param("id")
-        const delet = await Equipamento.findOrFail(id)
+        const delet = await Vicio.findOrFail(id)
         delet.delete()
         return delet
     }

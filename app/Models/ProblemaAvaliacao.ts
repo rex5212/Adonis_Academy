@@ -8,10 +8,10 @@ export default class ProblemaAvaliacao extends BaseModel {
   public id: number
 
   @column()
-  public avaliacaosId: number
+  public avaliacaoId: number
 
   @column()
-  public problemasId: number
+  public problemaId: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

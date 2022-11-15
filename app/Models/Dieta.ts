@@ -9,13 +9,13 @@ export default class Dieta extends BaseModel {
   public id: number
 
   @column()
-  public funcionariosId: number
+  public funcionarioId: number
 
   @column()
-  public clientesId: number
+  public clienteId: number
 
   @column()
-  public treinamentosId: number
+  public treinamentoId: number
 
   @column()
   public alimento: string

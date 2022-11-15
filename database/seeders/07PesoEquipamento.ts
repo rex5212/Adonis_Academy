@@ -4,9 +4,9 @@ import PesoEquipamento from 'App/Models/PesoEquipamento'
 export default class extends BaseSeeder {
   public async run () {
     await PesoEquipamento.createMany([
-      {pesosId: 1, equipamentosId:2},
-      {pesosId: 2, equipamentosId:2},
-      {pesosId: 3, equipamentosId:1},
+      {pesoId: 1, equipamentoId:2},
+      {pesoId: 2, equipamentoId:2},
+      {pesoId: 3, equipamentoId:1},
     ])
   }
 }

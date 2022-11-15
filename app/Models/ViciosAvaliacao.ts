@@ -11,7 +11,7 @@ export default class ViciosAvaliacao extends BaseModel {
   public avaliacaoId: number
 
   @column()
-  public viciosId: number
+  public vicioId: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

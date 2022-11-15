@@ -4,9 +4,9 @@ import Dieta from 'App/Models/Dieta'
 export default class extends BaseSeeder {
   public async run () {
     await Dieta.createMany([
-      {funcionariosId: 1, clientesId: 1, treinamentosId: 1, alimento: 'Batata-doce em pouca quantidade + feijão', quantidade: 4, complemento: 'suco de laranja'},
-      {funcionariosId: 2, clientesId: 1, treinamentosId: 2, alimento: 'Alface e tomate', quantidade: 4, complemento: 'Pepino'},
-      {funcionariosId: 3, clientesId: 1, treinamentosId: 3, alimento: 'Carne-de-sol', quantidade: 4, complemento: 'Farofa'},
+      {funcionarioId: 1, clienteId: 1, treinamentoId: 1, alimento: 'Batata-doce em pouca quantidade + feijão', quantidade: 4, complemento: 'suco de laranja'},
+      {funcionarioId: 2, clienteId: 1, treinamentoId: 2, alimento: 'Alface e tomate', quantidade: 4, complemento: 'Pepino'},
+      {funcionarioId: 3, clienteId: 1, treinamentoId: 3, alimento: 'Carne-de-sol', quantidade: 4, complemento: 'Farofa'},
     ])
   }
 }

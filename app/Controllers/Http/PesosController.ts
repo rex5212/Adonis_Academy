@@ -5,40 +5,33 @@ import Peso from "App/Models/Peso"
 export default class PesosController {
         
     async index(){
-        return  Peso.all()
-     }
+        return await Peso.query().preload("equipamentos")
+    }
  
-     async store({request}){
-
+    async store({request}){
         const dados = request.all()
-         return Peso.create(dados)
-         
-     }
+        return Peso.create(dados)     
+    }
  
-     async show({request}){
+    async show({request}){
+        const id = request.param("id")
+        const show = Peso.findBy('id', id)
+        return show
+    }
  
-         const id = request.param("id")
-         const show = Peso.findBy('id', id)
-         return show
-     }
+    async update({request}){
+        const id = request.param("id")
+        const dados = request.all()
+        const updat = await Peso.findOrFail(id)
+        updat.merge(dados).save()
+        return updat
+    }
  
-     async update({request}){
-        
-     const id = request.param("id")
-     const dados = request.all()
-     const updat = await Peso.findOrFail(id)
-     updat.merge(dados).save()
-     return updat
- 
-     }
- 
-     async destroy({request}){
-    
-     const id = request.param("id")
-     const delet = await Peso.findOrFail(id)
-     delet.delete()
-     return delet
- 
-     }
+    async destroy({request}){
+        const id = request.param("id")
+        const delet = await Peso.findOrFail(id)
+        delet.delete()
+        return delet
+    }
 
 }

@@ -4,8 +4,8 @@ import ProblemaAvaliacao from 'App/Models/ProblemaAvaliacao'
 export default class extends BaseSeeder {
   public async run () {
     await ProblemaAvaliacao.createMany([
-      {avaliacaosId: 3, problemasId: 1},
-      {avaliacaosId: 4, problemasId: 2}
+      {avaliacaoId: 3, problemaId: 1},
+      {avaliacaoId: 4, problemaId: 2}
     ])
   }
 }

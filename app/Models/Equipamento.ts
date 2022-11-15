@@ -15,10 +15,10 @@ export default class Equipamento extends BaseModel {
   public codigo: string
 
   @column()
-  public pesosId: number
+  public pesoId: number
 
   @column()
-  public academiasId: number
+  public academiaId: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

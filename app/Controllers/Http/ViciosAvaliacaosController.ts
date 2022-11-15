@@ -1,38 +1,36 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-import Equipamento from "App/Models/Equipamento"
+import ViciosAvaliacao from "App/Models/ViciosAvaliacao"
 
 export default class EquipamentosController {
         
     async index(){
-        return await Equipamento.query()
-                                .preload("pesos")
-                                .preload("academia")
-                                .preload("treinamentos")
+        return await ViciosAvaliacao.query().preload("avaliacao")
+                                            .preload("vicio")
     }
  
     async store({request}){
         const dados = request.all()
-        return Equipamento.create(dados)
+        return ViciosAvaliacao.create(dados)
     }
  
     async show({request}){
         const id = request.param("id")
-        const show = Equipamento.findBy('id', id)
+        const show = ViciosAvaliacao.findBy('id', id)
         return show
     }
  
     async update({request}){  
         const id = request.param("id")
         const dados = request.all()
-        const updat = await Equipamento.findOrFail(id)
+        const updat = await ViciosAvaliacao.findOrFail(id)
         updat.merge(dados).save()
         return updat
     }
  
     async destroy({request}){    
         const id = request.param("id")
-        const delet = await Equipamento.findOrFail(id)
+        const delet = await ViciosAvaliacao.findOrFail(id)
         delet.delete()
         return delet
     }

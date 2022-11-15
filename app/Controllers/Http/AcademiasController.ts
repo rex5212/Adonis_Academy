@@ -5,41 +5,36 @@ import Academia from "App/Models/Academia"
 export default class AcademiasController {
 
     async index(){
-        return  Academia.all()
-     }
+        return await Academia.query()
+                             .preload("suplemento")
+                             .preload("funcionarios")
+                             .preload("equipamentos")
+    }
  
-     async store({request}){
-
-         const dados = request.all()
-         return Academia.create(dados)
-         
-     }
+    async store({request}){
+        const dados = request.all()
+        return Academia.create(dados)  
+    }
  
-     show({request}){
+    async show({request}){
+        const id = request.param("id")
+        const showRow = Academia.findBy('id', id)
+        return showRow
+    }
  
-         const id = request.param("id")
-         const showRow = Academia.findBy('id', id)
-         return showRow
-
-     }
- 
-     async update({request}){
-        
+    async update({request}){
         const id = request.param("id")
         const dados = request.all()
         const updat = await Academia.findOrFail(id)
         updat.merge(dados).save()
         return updat
+    }
  
-     }
- 
-     async destroy({request}){
-         
-     const id = request.param("id")
-     const delet = await Academia.findOrFail(id)
-     delet.delete()
-     return delet
-
-     }
+    async destroy({request}){
+        const id = request.param("id")
+        const delet = await Academia.findOrFail(id)
+        delet.delete()
+        return delet
+    }
 
 }

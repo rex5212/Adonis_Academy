@@ -10,13 +10,13 @@ export default class Treinamento extends BaseModel {
   public id: number
 
   @column()
-  public equipamentosId: number
+  public equipamentoId: number
 
   @column()
-  public funcionariosId: number
+  public funcionarioId: number
 
   @column()
-  public avaliacaosId: number
+  public avaliacaoId: number
 
   @column()
   public repeticoes: string

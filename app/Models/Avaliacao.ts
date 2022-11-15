@@ -11,10 +11,10 @@ export default class Avaliacao extends BaseModel {
   public id: number
 
   @column()
-  public clientesId: number
+  public clienteId: number
   
   @column()
-  public funcionariosId: number
+  public funcionarioId: number
 
   @column()
   public altura: number
@@ -40,10 +40,10 @@ export default class Avaliacao extends BaseModel {
   @hasMany(() => Treinamento)
   public treinamento: HasMany<typeof Treinamento>
 
-  @manyToMany(() => Vicio, { pivotTable: 'vicios' })
+  @manyToMany(() => Vicio, { pivotTable: 'vicios_avaliacaos' })
   public vicios: ManyToMany <typeof Vicio>
 
-  @manyToMany(() => Problema, { pivotTable: 'problemas' })
+  @manyToMany(() => Problema, { pivotTable: 'problema_avaliacaos' })
   public problemas: ManyToMany <typeof Problema>
-  
+
 }
