@@ -1,0 +1,154 @@
+1- Instalar o GIT
+2- Instalar o Insomnia
+3- Instalar o Node
+
+metodo get: ver informações / recuperar dados
+metodo post: inserir informações
+metodo put: alterar / atualizar informações
+metodo delete: deletar informações
+metodo patch: atualiza parcialmente informações
+
+npm i
+npm init
+npm i express
+node i nodemon
+npx nodemon
+
+local host = http://127.0.0.1:3333/
+
+------------------
+
+const express = require('express')
+const app = express()
+
+------------------
+
+app.use(express.urlencoded({extended: true})) //md post
+
+------------------
+
+app.listen(3333, () => {
+    console.log('Servidor ON')
+})
+
+-----------------
+plugin chrome JSON Viewer
+
+-----------------
+
+__________________
+
+ADONIS.JS
+__________________
+//Criar Projects Adonis
+npm init adonis-ts-app@latest ''hello-world''
+
+//start server
+node ace serve --watch
+
+//Create Controller
+node ace make:controller ''Post''
+
+//Create a model
+node ace make:model ''Curso''
+
+//install banco de dados SQL
+npm i @adonisjs/lucid
+
+//configure lucid
+node ace configure @adonisjs/lucid
+
+//Migration
+node ace make:migration ''Curso''
+
+//model + migration
+node ace make:model ''Curso'' -m
+
+//model + migration + controller
+node ace make:model nomedommc -m -c
+
+node ace migration:run
+
+//desfaz a ultima alteração
+node ace migration:rollback
+
+//reset + run
+node ace migration:refresh
+
+//apaga todo o banco
+node ace migration:reset
+
+//seeders
+node ace make:seeder curso
+node ace db:seed
+node ace migration:refresh --seed
+
+//escolher a ordem das tabelas
+node ace db:seed -i
+
+@column()
+public nome: string
+@column()
+public nome: number
+
+
+//comand help
+node ace make -h
+
+//AFK
+table.integer('curso_id').unsigned().references('id).inTable('cursos').notNullable
+
+//banco de dados
+select *from cursos
+.all()
+
+//async e await andam sempre juntos (pede pro codigo esperar dar o return)
+
+//mostrar todas rotas
+node ace list:routes
+
+//add proejto no repositorio do Github, usando o GitBash
+git add -A
+git commit-m "nome_versao"
+
+$ git remote add origin https://github.com/MarcosSkL/Adonis_acad-mico.git
+
+git config --global user.name "Marcos Bezerra"
+git config --global user.email "marcos.marsk@gmail.com"
+
+insert into cursos(nome, duração, modaliadde)
+	    values ('ADS',     5,     "p")
+
+
+
+// Relacionamentos entre tabelas
+
+@hasMany( ()=> Disciplina )
+  public disciplinas: HasMany<typeof Disciplina>
+
+@belongsTo( ()=> Curso )
+  public curso: BelongsTo<typeof Curso>
+
+//Autenticação
+npm  i @adonisjs/auth
+node ace configure @adonisjs/auth
+
+//Instalação
+Lucid, API token, Yes migration, Database, Yes
+
+npm i phc-argon2
+
+----Abrir o arquivo Star - Kernel , Server.middleware.registerNamed({}) e colar:
+
+Server.middleware.registerNamed({
+    auth: () => import('App/Middleware/Auth')
+})
+
+
+
+
+
+
+
+
+
