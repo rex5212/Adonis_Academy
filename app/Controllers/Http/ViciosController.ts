@@ -1,6 +1,7 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Vicio from "App/Models/Vicio"
+import VicioValidator from "App/Validators/VicioValidator"
 
 export default class EquipamentosController {
         
@@ -9,7 +10,7 @@ export default class EquipamentosController {
     }
  
     async store({request}){
-        const dados = request.all()
+        const dados = await request.validate(VicioValidator)
         return Vicio.create(dados) 
     }
  
@@ -21,7 +22,7 @@ export default class EquipamentosController {
  
     async update({request}){  
         const id = request.param("id")
-        const dados = request.all()
+        const dados = await request.validate(VicioValidator)
         const updat = await Vicio.findOrFail(id)
         updat.merge(dados).save()
         return updat

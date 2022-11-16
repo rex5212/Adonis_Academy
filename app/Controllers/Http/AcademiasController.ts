@@ -1,6 +1,7 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Academia from "App/Models/Academia"
+import AcademiaValidator from "App/Validators/AcademiaValidator"
 
 export default class AcademiasController {
 
@@ -12,7 +13,7 @@ export default class AcademiasController {
     }
  
     async store({request}){
-        const dados = request.all()
+        const dados = await request.validate(AcademiaValidator)
         return Academia.create(dados)  
     }
  
@@ -24,7 +25,7 @@ export default class AcademiasController {
  
     async update({request}){
         const id = request.param("id")
-        const dados = request.all()
+        const dados = await request.validate(AcademiaValidator)
         const updat = await Academia.findOrFail(id)
         updat.merge(dados).save()
         return updat

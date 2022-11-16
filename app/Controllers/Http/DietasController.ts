@@ -1,6 +1,7 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Dieta from "App/Models/Dieta"
+import DietaValidator from "App/Validators/DietaValidator"
 
 export default class DietasController {
         
@@ -12,7 +13,7 @@ export default class DietasController {
     }
  
     async store({request}){
-        const dados = request.all()
+        const dados = await request.validate(DietaValidator)
         return Dieta.create(dados)   
     }
  
@@ -24,7 +25,7 @@ export default class DietasController {
  
     async update({request}){       
         const id = request.param("id")
-        const dados = request.all()
+        const dados = await request.validate(DietaValidator)
         const updat = await Dieta.findOrFail(id)
         updat.merge(dados).save()
         return updat 

@@ -7,30 +7,21 @@ export default class TreinamentoValidator {
 
   public schema = schema.create({
 
-    idAcademia: schema.number([
-      rules.exists({ table: 'treinamentos', column: 'id' }),
-      rules.unique({ table: 'treinamentos', column: 'id' }),
-  ]),
+    equipamentoId: schema.number.optional([
+      rules.exists({ table: 'equipamentos', column: 'id' }),
+    ]),
 
-  idSuplemento: schema.number([
-    rules.exists({ table: 'treinamentos', column: 'id' }),
-    rules.unique({ table: 'treinamentos', column: 'id' }),
-]),
+    funcionarioId: schema.number([
+      rules.exists({ table: 'funcionarios', column: 'id' }),
+    ]),
 
-idEquipamento: schema.number([
-  rules.exists({ table: 'treinamentos', column: 'id' }),
-  rules.unique({ table: 'treinamentos', column: 'id' }),
-]),
+    avaliacaoId: schema.number([
+      rules.exists({ table: 'avaliacaos', column: 'id' }),
+    ]),
 
-idFuncionario: schema.number([
-  rules.exists({ table: 'treinamentos', column: 'id' }),
-  rules.unique({ table: 'treinamentos', column: 'id' }),
-]),
-
-idAvaliacao: schema.number([
-  rules.exists({ table: 'treinamentos', column: 'id' }),
-  rules.unique({ table: 'treinamentos', column: 'id' }),
-]),
+    repeticoes: schema.string([
+      rules.maxLength(120)
+    ])
   })
 
   public messages: CustomMessages = {

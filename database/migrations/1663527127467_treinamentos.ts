@@ -9,7 +9,7 @@ export default class extends BaseSchema {
       table.integer('equipamento_id').unsigned().references('id').inTable('equipamentos').onDelete('CASCADE')
       table.integer('funcionario_id').unsigned().references('id').inTable('funcionarios').notNullable().onDelete('CASCADE')
       table.integer('avaliacao_id').unsigned().references('id').inTable('avaliacaos').notNullable().onDelete('CASCADE')
-      table.string('repeticoes', 40).notNullable()
+      table.string('repeticoes', 120).notNullable()
 
 
       /**

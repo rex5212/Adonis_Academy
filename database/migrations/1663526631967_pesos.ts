@@ -7,7 +7,7 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.string('codigo')
-      table.string('modelo', 10).notNullable()
+      table.string('modelo', 25).notNullable()
       table.integer('peso').notNullable()
 
       /**

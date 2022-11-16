@@ -1,6 +1,7 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Funcionario from "App/Models/Funcionario"
+import FuncionarioValidator from "App/Validators/FuncionarioValidator"
 
 export default class FuncionariosController {
         
@@ -13,7 +14,7 @@ export default class FuncionariosController {
     }
  
     async store({request}){
-        const dados = request.all()
+        const dados = await request.validate(FuncionarioValidator)
         return Funcionario.create(dados)  
     }
  
@@ -25,7 +26,7 @@ export default class FuncionariosController {
  
     async update({request}){  
         const id = request.param("id")
-        const dados = request.all()
+        const dados = await request.validate(FuncionarioValidator)
         const updat = await Funcionario.findOrFail(id)
         updat.merge(dados).save()
         return updat

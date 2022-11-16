@@ -1,6 +1,7 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Treinamento from "App/Models/Treinamento"
+import TreinamentoValidator from "App/Validators/TreinamentoValidator"
 
 export default class TreinamentosController {
         
@@ -13,7 +14,7 @@ export default class TreinamentosController {
     }
  
     async store({request}){
-        const dados = request.all()
+        const dados = await request.validate(TreinamentoValidator)
         return Treinamento.create(dados)   
     }
  
@@ -25,7 +26,7 @@ export default class TreinamentosController {
  
     async update({request}){
         const id = request.param("id")
-        const dados = request.all()
+        const dados = await request.validate(TreinamentoValidator)
         const updat = await Treinamento.findOrFail(id)
         updat.merge(dados).save()
         return updat

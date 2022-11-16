@@ -8,9 +8,9 @@ export default class extends BaseSchema {
       table.increments('id')
       table.integer('cliente_id').unsigned().references('id').inTable('clientes').notNullable().onDelete('CASCADE')
       table.integer('funcionario_id').unsigned().references('id').inTable('funcionarios').notNullable().onDelete('CASCADE')
-      table.integer('altura')
-      table.integer('peso')
-      table.string('alimentacao', 150)
+      table.integer('altura').notNullable()
+      table.integer('peso').notNullable()
+      table.string('alimentacao', 150).notNullable()
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

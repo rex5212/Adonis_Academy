@@ -6,11 +6,19 @@ export default class PesoValidator {
 
 
   public schema = schema.create({
+
+    codigo: schema.string.optional([
+      rules.alphaNum()
+    ]),
     
-    modelo: schema.string([rules.alpha({ allow: ['space'] }), rules.maxLength(100)]),
+    modelo: schema.string([
+      rules.alpha({ allow: [ 'space', 'dash' ] }), 
+      rules.maxLength(25)
+    ]),
 
-
-    numeracao: schema.number.optional([rules.range(1, 300)]),
+    peso: schema.number([
+      rules.unsigned()
+    ])
 
   })
 

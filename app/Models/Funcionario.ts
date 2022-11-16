@@ -19,6 +19,9 @@ export default class Funcionario extends BaseModel {
   public sexo: string
 
   @column()
+  public idade: number
+
+  @column()
   public endereco: string
 
   @column()

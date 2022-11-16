@@ -5,23 +5,30 @@ export default class AvaliacaoValidator {
   constructor(protected ctx: HttpContextContract) {}
 
   public schema = schema.create({
-    
-    estadoCivil: schema.string([rules.alpha({allow: ['space']}), rules.maxLength(100)]),
 
-    idCliente: schema.number([
-      rules.exists({ table: 'avaliacaos', column: 'id' }),
-      rules.unique({ table: 'avaliacaos', column: 'id' }),
+    clienteId: schema.number([
+      rules.exists({ table: 'clientes', column: 'id' }),
+      rules.unsigned()
     ]),
 
-    idAvpsicologica: schema.number([
-      rules.exists({ table: 'avaliacaos', column: 'id' }),
-      rules.unique({ table: 'avaliacaos', column: 'id' }),
+    funcionarioId: schema.number([
+      rules.exists({ table: 'funcionarios', column: 'id' }),
+      rules.unsigned()
     ]),
 
-    idAvfisica: schema.number([
-      rules.exists({ table: 'avaliacaos', column: 'id' }),
-      rules.unique({ table: 'avaliacaos', column: 'id' }),
+    altura: schema.number([
+      rules.unsigned(),
+      rules.range(1.15, 2.85)
     ]),
+
+    peso: schema.number([
+      rules.range(22.5, 150)
+    ]),
+
+    alimentacao: schema.string([
+      rules.maxLength(150)
+    ])
+
   })
 
   

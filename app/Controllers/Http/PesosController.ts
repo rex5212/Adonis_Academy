@@ -1,6 +1,7 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Peso from "App/Models/Peso"
+import PesoValidator from "App/Validators/PesoValidator"
 
 export default class PesosController {
         
@@ -9,7 +10,7 @@ export default class PesosController {
     }
  
     async store({request}){
-        const dados = request.all()
+        const dados = await request.validate(PesoValidator)
         return Peso.create(dados)     
     }
  
@@ -21,7 +22,7 @@ export default class PesosController {
  
     async update({request}){
         const id = request.param("id")
-        const dados = request.all()
+        const dados = await request.validate(PesoValidator)
         const updat = await Peso.findOrFail(id)
         updat.merge(dados).save()
         return updat

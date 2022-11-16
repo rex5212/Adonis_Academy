@@ -1,6 +1,7 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Suplemento from "App/Models/Suplemento"
+import SuplementoValidator from "App/Validators/SuplementoValidator"
 
 export default class SuplementosController {
         
@@ -9,7 +10,7 @@ export default class SuplementosController {
     }
  
     async store({request}){    
-        const dados = request.all()
+        const dados = await request.validate(SuplementoValidator)
         return Suplemento.create(dados)      
     }
  
@@ -21,7 +22,7 @@ export default class SuplementosController {
  
     async update({request}){
         const id = request.param("id")
-        const dados = request.all()
+        const dados = await request.validate(SuplementoValidator)
         const updat = await Suplemento.findOrFail(id)
         updat.merge(dados).save()
         return updat

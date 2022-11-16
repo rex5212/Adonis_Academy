@@ -6,24 +6,43 @@ export default class ClienteValidator {
 
   public schema = schema.create({
 
-    nome: schema.string([rules.alpha({ allow: ['space'] }), rules.maxLength(100)]),
+  nome: schema.string([
+    rules.alpha({ allow: ['space'] }), 
+    rules.maxLength(100),
+    rules.minLength(3)
+  ]),
 
-    cpf: schema.string.optional([
-      rules.unique({ table: 'clientes', column: 'id' }),
-      rules.regex(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/),
-    ]),
+  cpf: schema.string([
+    rules.unique({ table: 'clientes', column: 'cpf' }),
+    rules.regex(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/),
+  ]),
 
-    sexo: schema.string([rules.alpha({ allow: ['space'] }), rules.maxLength(1)]),
+  sexo: schema.string.optional([
+    rules.alpha(), 
+    rules.maxLength(10),
+    rules.minLength(1)
+  ]),
 
-    idade: schema.number.optional([rules.range(1, 10000)]),
+  idade: schema.number([
+    rules.range(6, 120),
+    rules.unsigned()
+  ]),
 
-    endereco: schema.string([rules.alpha({allow:['space']}),rules.maxLength(120)]),
+  endereco: schema.string.optional([
+    rules.maxLength(120),
+    rules.minLength(15)  
+  ]),
 
-    numero: schema.string.optional([
+  numero: schema.string.optional([ //
       rules.regex(/^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9]){3}\-?[0-9]{4}$/),
-      rules.mobile({locale:['pt-BR']}),
       rules.unique({table:'clientes', column:'numero'}),
-    ])
+  ]),
+
+  estadocivil: schema.string([
+    rules.alpha(),
+    rules.maxLength(12),
+    rules.minLength(5)
+  ])
 
 
   })

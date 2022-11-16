@@ -6,12 +6,24 @@ export default class EquipamentoValidator {
 
   public schema = schema.create({
 
-    nome: schema.string([rules.alpha({ allow: ['space'] }), rules.maxLength(100)]),
-
-    idPesos: schema.number([
-      rules.exists({ table: 'equipamentos', column: 'id' }),
-      rules.unique({ table: 'equipamentos', column: 'id' }),
+    nome: schema.string([
+      rules.alpha({ allow: ['space'] }), 
+      rules.maxLength(50),
+      rules.minLength(5)
     ]),
+
+    codigo: schema.string([
+      rules.alphaNum()
+    ]),
+
+    pesoId: schema.number([
+      rules.exists({ table: 'pesos', column: 'id' }),
+    ]),
+    
+    academiaId: schema.number([
+      rules.exists({ table: 'academias', column: 'id'})
+    ])
+
   })
 
   public messages: CustomMessages = {
