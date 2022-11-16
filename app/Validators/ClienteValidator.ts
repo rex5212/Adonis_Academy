@@ -14,7 +14,7 @@ export default class ClienteValidator {
 
   cpf: schema.string([
     rules.unique({ table: 'clientes', column: 'cpf' }),
-    rules.regex(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/),
+    rules.regex(/^\d{3}\.?\d{3}\.?\d{3}\-?\d{2}$/),
   ]),
 
   sexo: schema.string.optional([
@@ -33,9 +33,9 @@ export default class ClienteValidator {
     rules.minLength(15)  
   ]),
 
-  numero: schema.string.optional([ //
-      rules.regex(/^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9]){3}\-?[0-9]{4}$/),
-      rules.unique({table:'clientes', column:'numero'}),
+  numero: schema.string([ 
+    rules.regex(/^\(?[1-9]{2}\)? ?|[0-9]{5}\-?[0-9]{4}$/),
+    rules.unique({table:'clientes', column:'numero'}),
   ]),
 
   estadocivil: schema.string([
@@ -48,7 +48,9 @@ export default class ClienteValidator {
   })
 
   public messages: CustomMessages = {
-    maxLength:'o maximo de carateres do campo {{field}} e de {{options.maxLegth}}',
+    required : 'Os campos são obrigatorios para a criação do cliente', 
     minLength:'o maximo de carateres do campo {{field}} e de {{options.minLegth}}',
+    'cpf.regex' : 'O cpf so aceita numeros, podendo se no formato 000.000.000-00 ou 00000000000',
+    'numero.regex' : 'O numero so aceita numero e alguns caracteres especial, sendo o formato, (00) 00000-0000 ou 00000-0000'
   }
 }

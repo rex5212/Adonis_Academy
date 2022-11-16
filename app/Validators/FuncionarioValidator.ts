@@ -9,7 +9,7 @@ export default class FuncionarioValidator {
     
     cpf: schema.string([
       rules.unique({ table: 'funcionarios', column: 'cpf' }),
-      rules.regex(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/),
+      rules.regex(/^\d{3}\.?\d{3}\.?\d{3}\-?\d{2}$/),
     ]),
 
     nome: schema.string([
