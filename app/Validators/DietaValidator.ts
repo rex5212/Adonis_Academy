@@ -20,7 +20,7 @@ export default class DietaValidator {
     ]),
 
     alimento: schema.string([
-      rules.minLength(75)
+      rules.minLength(10000)
     ]),
 
     quantidade: schema.number([
