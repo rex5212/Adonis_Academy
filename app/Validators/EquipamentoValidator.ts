@@ -1,33 +1,29 @@
-import { schema, CustomMessages, rules } from '@ioc:Adonis/Core/Validator'
-import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import { schema, CustomMessages, rules } from "@ioc:Adonis/Core/Validator";
+import type { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 
 export default class EquipamentoValidator {
   constructor(protected ctx: HttpContextContract) {}
 
   public schema = schema.create({
-
     nome: schema.string([
-      rules.alpha({ allow: ['space'] }), 
-      rules.maxLength(50),
-      rules.minLength(5)
+      rules.alpha({ allow: ["space"] }),
+      rules.maxLength(150),
+      rules.minLength(5),
     ]),
 
-    codigo: schema.string([
-      rules.alphaNum()
-    ]),
+    codigo: schema.string([rules.alphaNum()]),
 
-    pesoId: schema.number([
-      rules.exists({ table: 'pesos', column: 'id' }),
-    ]),
-    
+    pesoId: schema.number([rules.exists({ table: "pesos", column: "id" })]),
+
     academiaId: schema.number([
-      rules.exists({ table: 'academias', column: 'id'})
-    ])
-
-  })
+      rules.exists({ table: "academias", column: "id" }),
+    ]),
+  });
 
   public messages: CustomMessages = {
-    maxLength:'o maximo de carateres do campo {{field}} e de {{options.maxLegth}}',
-    minLength:'o maximo de carateres do campo {{field}} e de {{options.minLegth}}',
-  }
+    maxLength:
+      "o maximo de carateres do campo {{field}} e de {{options.maxLegth}}",
+    minLength:
+      "o maximo de carateres do campo {{field}} e de {{options.minLegth}}",
+  };
 }
