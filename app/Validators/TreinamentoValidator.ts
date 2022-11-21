@@ -24,8 +24,5 @@ export default class TreinamentoValidator {
     ])
   })
 
-  public messages: CustomMessages = {
-    maxLength:'o maximo de carateres do campo {{field}} e de {{options.maxLegth}}',
-    minLength:'o maximo de carateres do campo {{field}} e de {{options.minLegth}}',
-  }
+  public messages: CustomMessages = {}
 }
