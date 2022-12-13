@@ -1,3 +1,6 @@
 # Adonis_Academy
 
-## Depois de clona o arquivo usando os codigos no prompt do windows
+Implementa a pesquisa por variavel nos controllers
+
+Enriquese os seedes
+
